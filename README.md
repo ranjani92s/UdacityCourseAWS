@@ -37,7 +37,7 @@ x
 y
 z
 
-**Customer Trusted **
+**Customer Trusted**
 serialnumber
 sharewithpublicasofdate
 birthday
@@ -49,7 +49,7 @@ lastupdatedate
 phone
 sharewithfriendsasofdate
 
-**Customer Curated **( Customer Trsuted joins Accelerometer Landing on email == user)
+**Customer Curated**( Customer Trsuted joins Accelerometer Landing on email == user)
 serialnumber
 sharewithpublicasofdate
 birthday
