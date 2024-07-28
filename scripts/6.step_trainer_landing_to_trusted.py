@@ -62,7 +62,7 @@ DropFields_node1690251367538 = DropFields.apply(
 
 # Script generated for node Step Trainer Trusted
 StepTrainerCuratedZone_node3 = glueContext.getSink(
-    path="s3://shiva-stedi/step_trainer/trsuted/step_trainer_trusted/",
+    path="s3://shiva-stedi/step_trainer/trusted/step_trainer_trusted/",
     connection_type="s3",
     updateBehavior="LOG",
     partitionKeys=[],
