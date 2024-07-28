@@ -70,7 +70,7 @@ StepTrainerCuratedZone_node3 = glueContext.getSink(
     transformation_ctx="StepTrainerTrusted_node3",
 )
 StepTrainerCuratedZone_node3.setCatalogInfo(
-    catalogDatabase="stedi", catalogTableName="step_trainer_curated"
+    catalogDatabase="stedi", catalogTableName="step_trainer_trusted"
 )
 StepTrainerCuratedZone_node3.setFormat("json")
 StepTrainerCuratedZone_node3.writeFrame(DropDuplicates_node1688840572934)
