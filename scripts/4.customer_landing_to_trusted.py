@@ -32,16 +32,19 @@ PrivacyFilter_node1689302643878 = Filter.apply(
     transformation_ctx="PrivacyFilter_node1689302643878",
 )
 
-# Script generated for node Trusted Customer Zone
-TrustedCustomerZone_node1689302785277 = glueContext.write_dynamic_frame.from_options(
-    frame=PrivacyFilter_node1689302643878,
-    connection_type="s3",
-    format="json",
-    connection_options={
-        "path": "s3://shiva-stedi/customer/trusted/",
-        "partitionKeys": [],
-    },
-    transformation_ctx="TrustedCustomerZone_node1689302785277",
-)
 
+# Script generated for node Customer Trusted Zone
+CustomerTrustedZone_node1688095478499 = glueContext.getSink(
+    path="s3://shiva-stedi/customer/trusted/customer_trusted/",
+    connection_type="s3",
+    updateBehavior="UPDATE_IN_DATABASE",
+    partitionKeys=[],
+    enableUpdateCatalog=True,
+    transformation_ctx="CustomerTrustedZone_node1688095478499",
+)
+CustomerTrustedZone_node1688095478499.setCatalogInfo(
+    catalogDatabase="stedi", catalogTableName="customer_trusted"
+)
+CustomerTrustedZone_node1688095478499.setFormat("json")
+CustomerTrustedZone_node1688095478499.writeFrame(Filter_node1688095289055)
 job.commit()
