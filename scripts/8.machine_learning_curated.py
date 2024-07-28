@@ -50,7 +50,7 @@ MachineLearningZone_node3 = glueContext.getSink(
     updateBehavior="LOG",
     partitionKeys=[],
     enableUpdateCatalog=True,
-    transformation_ctx="MachineLearningZone_node3",
+    transformation_ctx="MachineLearningCurated_node3",
 )
 MachineLearningZone_node3.setCatalogInfo(
     catalogDatabase="stedi", catalogTableName="machine_learning_curated"
