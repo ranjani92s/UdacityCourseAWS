@@ -41,17 +41,18 @@ DropFields_node1689563733947 = DropFields.apply(
     paths=["user", "x", "y", "z", "timestamp"],
     transformation_ctx="DropFields_node1689563733947",
 )
-
-# Script generated for node S3 bucket
-S3bucket_node3 = glueContext.write_dynamic_frame.from_options(
-    frame=DropFields_node1689563733947,
+# Script generated for node Customer Curated
+CustomerCurated_node3 = glueContext.getSink(
+    path="s3://shiva-stedi/customer/curated/customer_curated/",
     connection_type="s3",
-    format="json",
-    connection_options={
-        "path": "s3://shiva-stedi/customer/curated/",
-        "partitionKeys": [],
-    },
-    transformation_ctx="S3bucket_node3",
+    updateBehavior="LOG",
+    partitionKeys=[],
+    enableUpdateCatalog=True,
+    transformation_ctx="CustomerCurated_node3",
 )
-
+CustomerCurated_node3.setCatalogInfo(
+    catalogDatabase="stedi", catalogTableName="customer_curated"
+)
+CustomerCurated_node3.setFormat("json")
+CustomerCurated_node3.writeFrame(DropFields_node1685823281966)
 job.commit()
