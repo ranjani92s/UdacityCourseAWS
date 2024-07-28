@@ -42,12 +42,19 @@ DropFields_node1690275056039 = DropFields.apply(
     transformation_ctx="DropFields_node1690275056039",
 )
 
-# Script generated for node Machine Learning Curated
-MachineLearningCurated_node1690275064394 = glueContext.write_dynamic_frame.from_catalog(
-    frame=DropFields_node1690275056039,
-    database="stedi",
-    table_name="machine_learning_curated",
-    transformation_ctx="MachineLearningCurated_node1690275064394",
-)
 
+# Script generated for node Machine Learning Curated
+MachineLearningZone_node3 = glueContext.getSink(
+    path="s3://shiva-stedi/machine_learning/machine_learning_curated/",
+    connection_type="s3",
+    updateBehavior="LOG",
+    partitionKeys=[],
+    enableUpdateCatalog=True,
+    transformation_ctx="MachineLearningZone_node3",
+)
+MachineLearningZone_node3.setCatalogInfo(
+    catalogDatabase="stedi", catalogTableName="machine_learning_curated"
+)
+MachineLearningZone_node3.setFormat("json")
+MachineLearningZone_node3.writeFrame(DropDuplicates_node1688843613159)
 job.commit()
