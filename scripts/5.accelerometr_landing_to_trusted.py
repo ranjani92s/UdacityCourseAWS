@@ -53,16 +53,19 @@ DropFields_node1689563733947 = DropFields.apply(
     transformation_ctx="DropFields_node1689563733947",
 )
 
-# Script generated for node S3 bucket
-S3bucket_node3 = glueContext.write_dynamic_frame.from_options(
-    frame=DropFields_node1689563733947,
-    connection_type="s3",
-    format="json",
-    connection_options={
-        "path": "s3://shiva-stedi/accelerometer/trusted/",
-        "partitionKeys": [],
-    },
-    transformation_ctx="S3bucket_node3",
-)
 
+# Script generated for node Accelerometer Trusted
+AccelerometerTrusted_node1688097919698 = glueContext.getSink(
+    path="s3://shiva-stedi/accelerometer/trusted/accelerometer_trusted/",
+    connection_type="s3",
+    updateBehavior="LOG",
+    partitionKeys=[],
+    enableUpdateCatalog=True,
+    transformation_ctx="AccelerometerTrusted_node1688097919698",
+)
+AccelerometerTrusted_node1688097919698.setCatalogInfo(
+    catalogDatabase="stedi", catalogTableName="accelerometer_trusted"
+)
+AccelerometerTrusted_node1688097919698.setFormat("json")
+AccelerometerTrusted_node1688097919698.writeFrame(DropFields_node1688097883085)
 job.commit()
