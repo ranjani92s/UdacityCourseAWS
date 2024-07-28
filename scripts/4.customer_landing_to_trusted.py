@@ -33,14 +33,14 @@ PrivacyFilter_node1689302643878 = Filter.apply(
 )
 
 
-# Script generated for node Customer Trusted Zone
+# Script generated for node Customer Trusted
 CustomerTrustedZone_node1688095478499 = glueContext.getSink(
     path="s3://shiva-stedi/customer/trusted/customer_trusted/",
     connection_type="s3",
     updateBehavior="UPDATE_IN_DATABASE",
     partitionKeys=[],
     enableUpdateCatalog=True,
-    transformation_ctx="CustomerTrustedZone_node1688095478499",
+    transformation_ctx="CustomerTrusted_node1688095478499",
 )
 CustomerTrustedZone_node1688095478499.setCatalogInfo(
     catalogDatabase="stedi", catalogTableName="customer_trusted"
