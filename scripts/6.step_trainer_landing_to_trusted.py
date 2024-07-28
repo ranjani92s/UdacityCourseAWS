@@ -67,7 +67,7 @@ StepTrainerCuratedZone_node3 = glueContext.getSink(
     updateBehavior="LOG",
     partitionKeys=[],
     enableUpdateCatalog=True,
-    transformation_ctx="StepTrainerCuratedZone_node3",
+    transformation_ctx="StepTrainerTrusted_node3",
 )
 StepTrainerCuratedZone_node3.setCatalogInfo(
     catalogDatabase="stedi", catalogTableName="step_trainer_curated"
