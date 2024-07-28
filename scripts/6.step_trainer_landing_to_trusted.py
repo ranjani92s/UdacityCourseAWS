@@ -58,12 +58,20 @@ DropFields_node1690251367538 = DropFields.apply(
     transformation_ctx="DropFields_node1690251367538",
 )
 
-# Script generated for node Step Trainer Trusted
-StepTrainerTrusted_node1690274010832 = glueContext.write_dynamic_frame.from_catalog(
-    frame=DropFields_node1690251367538,
-    database="stedi",
-    table_name="step_trainer_trusted",
-    transformation_ctx="StepTrainerTrusted_node1690274010832",
-)
 
+
+# Script generated for node Step Trainer Trusted
+StepTrainerCuratedZone_node3 = glueContext.getSink(
+    path="s3://shiva-stedi/step_trainer/trsuted/step_trainer_trusted/",
+    connection_type="s3",
+    updateBehavior="LOG",
+    partitionKeys=[],
+    enableUpdateCatalog=True,
+    transformation_ctx="StepTrainerCuratedZone_node3",
+)
+StepTrainerCuratedZone_node3.setCatalogInfo(
+    catalogDatabase="stedi", catalogTableName="step_trainer_curated"
+)
+StepTrainerCuratedZone_node3.setFormat("json")
+StepTrainerCuratedZone_node3.writeFrame(DropDuplicates_node1688840572934)
 job.commit()
